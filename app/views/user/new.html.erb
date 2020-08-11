@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <%= form_for @user, url: "/users" do |form|%>
+            <h1>Cadastro</h1>
+            <p>Para se cadastrar preencha todas informações</p>
+            <div>   
+                <%=form.label :name, "Nome"%>
+                <%=form.text_field :name%>
+            </div>
+            <div>
+                <%=form.label :email, "Email"%>
+                <%=form.email_field :email%>
+            </div>
+            <div>
+                <%=form.label :password, "Senha"%>
+                <%=form.password_field :password%>
+            </div>
+            <div>
+                <%=form.submit "Cadastrar"%>
+            </div>
+        <%end%>
+    </body>
+</html>

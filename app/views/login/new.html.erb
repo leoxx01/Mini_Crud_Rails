@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <%= form_for :user, url:users_login_path do |form|%>
+            <h1>Login</h1>
+            <p>Para se logar<p>
+            <div>
+                <%=form.label :email, "Email"%>
+                <%=form.email_field :email%>
+            </div>
+            <div>
+                <%=form.label :password, "Senha"%>
+                <%=form.password_field :password%>
+            </div>
+            <div>
+                <%=form.submit "Logar"%>
+            </div>
+        <%end%>
+    </body>
+</html>
