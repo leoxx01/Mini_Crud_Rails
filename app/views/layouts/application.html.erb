@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <%if user_signed_in? %>
+      <%= link_to "Sair", "users/sign_out"%>
+    <%else%>
+      <%= link_to "Cadastro", "users/new"%>
+      <%= link_to "Login", "users/login"%>  
+    <%end%>
     <%= yield %>
   </body>
 </html>

@@ -5,10 +5,15 @@ class LoginController < ApplicationController
     def login
         @user = User.find_by(email: params[:user][:email].downcase)
                 if @user && @user.authenticate(params[:user][:password])
-                    redirect_to root_path, notice: "Ola"
+                    reset_session
+                    session[:user_id] = @user.id
+                    redirect_to root_path, notice: "Logado com sucesso #{@user.name}"
                 else 
-                    puts "Deu ruim"
+                    redirect_to root_path, alert: "Erro ao logar"
                 end
-            
+    end
+    def destroy
+        reset_session
+        redirect_to root_path, notice: "Sessão finalizada"
     end
 end

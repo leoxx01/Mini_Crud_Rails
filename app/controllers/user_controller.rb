@@ -4,8 +4,10 @@ class UserController < ApplicationController
     end
     def create
         @user = User.new(users_params)
-        @user.save
-        redirect_to "/"
+        if @user.save
+            redirect_to "/", notice: "Cadastrado com sucesso #{@user.name}"
+        end
+        
     end
     def users_params
         params.require(:user).permit(:name,:email,:password)

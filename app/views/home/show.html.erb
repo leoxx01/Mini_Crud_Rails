@@ -5,8 +5,23 @@
 
   <body>
     <h1>Bem-Vindo ao SGU Sistema de Genrenciamento de Usuario</h1>
-
-    <%= link_to "Cadastro", "users/new"%>
-    <%= link_to "Login", "users/login"%>
+    <p>
+      <%= flash.notice%>
+      <%= flash.alert%>
+    </p>
+    <%=link_to "Novo Usuario",'/users/new' %>
+    <%if user_signed_in? %>
+      <div>
+        <ul>
+        <%@user.each do |user|%>
+          <li>
+            <p><%=user.name%></p>
+            <p><%=user.email%></p>
+            <p><%=link_to "Editar","/user/edit/#{user.id}" %></p>
+          </li>
+        <%end%>
+        </ul>
+      </div>
+    <%end%>
   </body>
 </html>
